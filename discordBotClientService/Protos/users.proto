@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "DiscordServerUserTrackingBot.DiscordBotClientService";
+
+package userService;
+
+service GetUsers {
+	rpc GetAllServerUsers (DiscordUserIdsRequest) returns (DiscordUserIdsResponce);
+}
+
+message DiscordUserIdsRequest{
+
+}
+
+message DiscordUserIdsResponce {
+	repeated uint64 discordUserId = 1;
+}

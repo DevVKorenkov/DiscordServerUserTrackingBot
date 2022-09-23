@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordServerUserTrackingBot.YandexSyncService", "DiscordServerUserTrackingBot.YandexSyncService.csproj", "{6D45E28A-54A7-4B4E-A074-7F22FA612864}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordServerUserTrackingBot.ConfigureSyncUserLib", "..\configureSyncUserLib\DiscordServerUserTrackingBot.ConfigureSyncUserLib.csproj", "{10F1C898-5492-462E-A26E-06E4F7EF54BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordServerUserTrackingBot.DiscordBotClientService", "..\discordBotClientService\DiscordServerUserTrackingBot.DiscordBotClientService.csproj", "{8913A9FC-4CA9-4359-95E3-3F26C28463DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordServerUserTrackingBot.SilentUsersRemovingService", "..\silentUsersRemovingService\DiscordServerUserTrackingBot.SilentUsersRemovingService\DiscordServerUserTrackingBot.SilentUsersRemovingService.csproj", "{48115562-3E95-45F4-95B3-27BB648AADA5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordServerUserTrackingBot.UserEventSenderService", "..\userEventSenderService\DiscordServerUserTrackingBot.UserEventSenderService.csproj", "{4F432424-7B52-4740-8AF5-260A4358B46D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D45E28A-54A7-4B4E-A074-7F22FA612864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D45E28A-54A7-4B4E-A074-7F22FA612864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D45E28A-54A7-4B4E-A074-7F22FA612864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D45E28A-54A7-4B4E-A074-7F22FA612864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10F1C898-5492-462E-A26E-06E4F7EF54BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F1C898-5492-462E-A26E-06E4F7EF54BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F1C898-5492-462E-A26E-06E4F7EF54BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10F1C898-5492-462E-A26E-06E4F7EF54BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8913A9FC-4CA9-4359-95E3-3F26C28463DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8913A9FC-4CA9-4359-95E3-3F26C28463DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8913A9FC-4CA9-4359-95E3-3F26C28463DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8913A9FC-4CA9-4359-95E3-3F26C28463DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48115562-3E95-45F4-95B3-27BB648AADA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48115562-3E95-45F4-95B3-27BB648AADA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48115562-3E95-45F4-95B3-27BB648AADA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48115562-3E95-45F4-95B3-27BB648AADA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F432424-7B52-4740-8AF5-260A4358B46D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F432424-7B52-4740-8AF5-260A4358B46D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F432424-7B52-4740-8AF5-260A4358B46D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F432424-7B52-4740-8AF5-260A4358B46D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F44806BB-7BD1-40B4-9D44-AE76A1DB51F1}
+	EndGlobalSection
+EndGlobal

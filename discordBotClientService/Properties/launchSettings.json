@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DiscordServerUserTrackingBot.DiscordBotClientService": {
+      "commandName": "Project",
+      "commandLineArgs": "send=false",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true
+    }
+  }
+}

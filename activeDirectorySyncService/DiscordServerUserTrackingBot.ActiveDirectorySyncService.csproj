@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-DsBot.ActiveDirectorySyncronizationService-F604861F-581B-40A5-B5FF-00E651477022</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <AssemblyName>DsBot.ActiveDirectorySync</AssemblyName>
+        <RootNamespace>DsBot.ActiveDirectorySync</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="HotChocolate.AspNetCore" Version="12.11.1" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+        <PackageReference Include="MongoDB.Driver" Version="2.16.0" />
+        <PackageReference Include="System.DirectoryServices" Version="6.0.0" />
+        <PackageReference Include="System.DirectoryServices.AccountManagement" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\configureSyncUserLib\DsBot.ConfigureSyncUserLib.csproj" />
+    </ItemGroup>
+	
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+</Project>

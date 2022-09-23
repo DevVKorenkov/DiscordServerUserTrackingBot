@@ -1,0 +1,102 @@
+version: '3.4'
+
+services:    
+
+  DiscordServerUserTrackingBot.discordbotclientservice:
+    image: ${DOCKER_REGISTRY-}discordbotclientservice
+    restart: "no"
+    container_name: discordbotclientservice
+    build:
+      context: .
+      dockerfile: discordBotClientService/Dockerfile
+    environment: 
+      RabbitMqSettings__Url: rabbitmq://rabbitmq:5672
+      RabbitMqSettings__User: guest
+      RabbitMqSettings__Password: guest
+      RabbitMqSettings__RetryCount: 3
+      RabbitMqSettings__RetryIntervalMs: 1000
+      RabbitMqSettings__TimeoutMs: 3000
+      DiscordBotSettings__BotToken: "DiscordBotToken"
+      DiscordBotSettings__WelcomeMessage: Hello, follow the link to join server. 
+      DiscordBotSettings__ReRegistrationMessage: Planing re-registration. Please follow the link.
+      DiscordBotSettings__AuthenticationUrl: "AuthUrl"
+      DiscordBotSettings__YandexAuthUrl: www.yandex.ru/
+      DiscordBotSettings__Roles: "roles int array"
+      DiscordBotSettings__ReadinessWaitTimeoutMs: 5000
+      DiscordBotSettings__TimeoutMs: 500
+      send: "true"
+    expose: 
+      - "80"
+
+
+  DiscordServerUserTrackingBot.silentusersremovingservice:
+    image: ${DOCKER_REGISTRY-}silentusersremovingservice
+    build:
+      context: .
+      dockerfile: silentUsersRemovingService/DiscordServerUserTrackingBot.SilentUsersRemovingService/Dockerfile
+    environment:
+      ConnectionStrings__MongoConnectionString: mongodb://mongo1:27017/?compressors=disabled&gssapiServiceName=mongodb
+      UserDbSettings__DataBaseName: discordusersdatabase
+      UserDbSettings__CollectionName: usercollection
+      RabbitMqSettings__Url: rabbitmq://rabbitmq:5672
+      RabbitMqSettings__User: guest
+      RabbitMqSettings__Password: guest
+      RabbitMqSettings__TimeoutMs: 5000
+      GraphQLClientSettings__ServerUrl: http://discordbotclientservice
+      DelayedWorkerSettings__DaysDelay: 2
+      HangfireSettings__MongoUrl: mongodb://mongo1:27017/?compressors=disabled&gssapiServiceName=mongodb
+      HangfireSettings__MongoDatabase: hangfiredatabase
+      UsersRequestSettings__Url: "http://discordbotclientservice/DiscordUsers/GetUsers"
+      EventDbSettings__DataBaseName: discordusersdatabase
+      EventDbSettings__CollectionName: eventcollection
+    expose: 
+      - "80"
+
+
+  DiscordServerUserTrackingBot.usereventsenderservice:
+    image: ${DOCKER_REGISTRY-}DiscordServerUserTrackingBotusereventsenderservice
+    build:
+      context: .
+      dockerfile: userEventSenderService/Dockerfile
+    environment:
+      ServiceSettings__WorkerRestartDelaySeconds: 30
+      EventDbSettings__DataBaseName: discordusersdatabase
+      EventDbSettings__CollectionName: eventcollection
+      ConnectionStrings__MongoConnectionString: mongodb://mongo1:27017/?compressors=disabled&gssapiServiceName=mongodb
+      RabbitMqSettings__Url: rabbitmq://rabbitmq:5672
+      RabbitMqSettings__User: guest
+      RabbitMqSettings__Password: guest
+      RabbitMqSettings__TimeoutMs: 5000
+    expose: 
+      - "80"
+
+
+  DiscordServerUserTrackingBot.yandexsyncservice:
+    image: ${DOCKER_REGISTRY-}DiscordServerUserTrackingBotyandexsyncservice
+    container_name: yandexauthservice
+    build:
+      context: .
+      dockerfile: yandexSyncService/Dockerfile
+    environment:
+      ServiceSettings__WorkerRestartDelayDays: 3
+      UserDbSettings__DataBaseName: discordusersdatabase
+      UserDbSettings__CollectionName: usercollection
+      EventDbSettings__DataBaseName: discordusersdatabase
+      EventDbSettings__CollectionName: eventcollection
+      ConnectionStrings__MongoConnectionString: mongodb://mongo1:27017/?compressors=disabled&gssapiServiceName=mongodb
+      RabbitMqSettings__Url: rabbitmq://rabbitmq:5672
+      RabbitMqSettings__User: guest
+      RabbitMqSettings__Password: guest
+      RabbitMqSettings__TimeoutMs: 5000
+      YandexSettings__Token: "YandexToken"
+      YandexSettings__UsersPerPage: 1000
+      YandexSettings__UsersRequestUrl: https://api360.yandex.net/directory/v1/org/7210070/users?perPage=
+    ports:
+      - 5531:80
+    expose: 
+      - "80"
+
+networks:
+    default:
+        external:
+            name: yandex
